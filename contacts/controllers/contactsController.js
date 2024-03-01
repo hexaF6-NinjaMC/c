@@ -3,7 +3,7 @@ const objectId = require('mongodb').ObjectId;
 
 const getContact = async (req, res, next) => {
     const userId = objectId.createFromTime(req.params.id);
-    const result = await mongodb.getDb().db().collection('contacts').find({ '_id':  userId});
+    const result = await mongodb.getDb().db().collection('contacts').find({ _id:  userId });
     result.toArray().then((lists) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(lists[0]);
@@ -44,7 +44,7 @@ const updateContact = async (req, res, next) => {
         favoriteColor: req.body.favoriteColor,
         birthday: req.body.birthday
     };
-    const response = await mongodb.getDb().db().collection('contacts').replaceOne({_id: userId}, user);
+    const response = await mongodb.getDb().db().collection('contacts').replaceOne({ _id: userId }, user);
     console.log(response);
     if (response.modifiedCount > 0) {
         res.status(204).send();
