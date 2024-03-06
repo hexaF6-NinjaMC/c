@@ -1,3 +1,4 @@
+### =========================================================== ###
 ### localhost:8080
 ###
 GET http://localhost:8080/ HTTP/1.1
@@ -10,21 +11,21 @@ content-type: application/json
     "firstName": "John",
     "lastName": "Doe",
     "email": "email@doe.com",
-    "favoriteColor": "(blank)",
-    "birthday": "(invalid date)"
+    "favoriteColor": "monotonic shades",
+    "birthday": "NT/4U/1999"
 }
 
 ###
-GET http://localhost:8080/:id1 HTTP/1.1
+GET http://localhost:8080/65e151deec9a15a38013027b HTTP/1.1
 
 ###
-PUT http://localhost:8080/:id1 HTTP/1.1
+PUT http://localhost:8080/65e151deec9a15a38013027b HTTP/1.1
 content-type: application/json
 
 {
     "firstName": "John",
     "lastName": "Doe",
-    "email": "email@doe.com",
+    "email": "johnnyboi@doe.com",
     "favoriteColor": "dark colors",
     "birthday": "NT/4U/1999"
 }
@@ -45,36 +46,36 @@ content-type: application/json
 GET http://localhost:8080/ HTTP/1.1
 
 ###
-GET http://localhost:8080/:id2 HTTP/1.1
+GET http://localhost:8080/65e151f4ec9a15a38013027c HTTP/1.1
 
 ###
-DELETE http://localhost:8080/:id2 HTTP/1.1
+DELETE http://localhost:8080/65e151f4ec9a15a38013027c HTTP/1.1
 
 ###
-DELETE http://localhost:8080/:id1 HTTP/1.1
+DELETE http://localhost:8080/65e151deec9a15a38013027b HTTP/1.1
 
-### ============================================================ ###
+### =========================================================== ###
 ### Render
 ###
-GET https://cse341-68j4.onrender.com/ HTTP/1.1
+GET https://contacts-ia6n.onrender.com/ HTTP/1.1
 
 ###
-POST https://cse341-68j4.onrender.com/ HTTP/1.1
+POST https://contacts-ia6n.onrender.com/ HTTP/1.1
 content-type: application/json
 
 {
-    "firstName": "John",
-    "lastName": "Doe",
-    "email": "email@doe.com",
-    "favoriteColor": "(blank)",
-    "birthday": "(invalid date)"
+    "firstName": "Maggie",
+    "lastName": "Bechtel",
+    "email": "magstergirlygirl@gmail.com",
+    "favoriteColor": "red",
+    "birthday": "10/05/1998"
 }
 
 ###
-GET https://cse341-68j4.onrender.com/65e126f4cc5aa45e0551aa86 HTTP/1.1
+GET https://contacts-ia6n.onrender.com/65e14f5cec9a15a38013027a HTTP/1.1
 
 ###
-PUT https://cse341-68j4.onrender.com/:id1 HTTP/1.1
+PUT https://contacts-ia6n.onrender.com/65e14f5cec9a15a38013027a HTTP/1.1
 content-type: application/json
 
 {
@@ -86,25 +87,28 @@ content-type: application/json
 }
 
 ###
-POST https://cse341-68j4.onrender.com/ HTTP/1.1
+POST https://contacts-ia6n.onrender.com/ HTTP/1.1
 content-type: application/json
 
 {
-    "firstName": "Jane",
-    "lastName": "Doe",
-    "email": "janet@doe.com",
+    "firstName": "Richelle",
+    "lastName": "Fowler",
+    "email": "richellefowler5@gmail.com",
     "favoriteColor": "pretty colors",
     "birthday": "NT/4U/2000"
 }
 
 ###
-GET https://cse341-68j4.onrender.com/ HTTP/1.1
+GET https://contacts-ia6n.onrender.com/ HTTP/1.1
 
 ###
-GET https://cse341-68j4.onrender.com/:id2 HTTP/1.1
+GET https://contacts-ia6n.onrender.com/65e14f57ec9a15a380130279 HTTP/1.1
 
 ###
-DELETE https://cse341-68j4.onrender.com/:id2 HTTP/1.1
+DELETE https://contacts-ia6n.onrender.com/65e14f57ec9a15a380130279 HTTP/1.1
 
 ###
-DELETE https://cse341-68j4.onrender.com/:id1 HTTP/1.1
+DELETE https://contacts-ia6n.onrender.com/65e14f5cec9a15a38013027a HTTP/1.1
+
+###
+GET https://contacts-ia6n.onrender.com/ HTTP/1.1

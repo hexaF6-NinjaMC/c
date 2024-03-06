@@ -1,16 +1,16 @@
 const mongodb = require('../db/connect.js');
-const objectId = require('mongodb').ObjectId;
+const createObjectId = require('mongodb').ObjectId.createFromHexString;
 
-const getContact = async (req, res, next) => {
-    const userId = objectId.createFromTime(req.params.id);
-    const result = await mongodb.getDb().db().collection('contacts').find({ _id:  userId });
+const getContact = async (req, res) => {
+    const userId = createObjectId(req.params.id);
+    const result = await mongodb.getDb().db().collection('contacts').find({ _id: userId });
     result.toArray().then((lists) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(lists[0]);
     });
 };
 
-const getAllContacts = async (req, res, next) => {
+const getAllContacts = async (req, res) => {
     const result = await mongodb.getDb().db().collection('contacts').find();
     result.toArray().then((lists) => {
         res.setHeader('Content-Type', 'application/json');
@@ -18,7 +18,7 @@ const getAllContacts = async (req, res, next) => {
     });
 };
 
-const createContact = async (req, res, next) => {
+const createContact = async (req, res) => {
     const contact = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -35,8 +35,8 @@ const createContact = async (req, res, next) => {
     }
 };
 
-const updateContact = async (req, res, next) => {
-    const userId = objectId.createFromTime(req.params.id);
+const updateContact = async (req, res) => {
+    const userId = createObjectId(req.params.id);
     const user = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -45,7 +45,6 @@ const updateContact = async (req, res, next) => {
         birthday: req.body.birthday
     };
     const response = await mongodb.getDb().db().collection('contacts').replaceOne({ _id: userId }, user);
-    console.log(response);
     if (response.modifiedCount > 0) {
         res.status(204).send();
     } else {
@@ -53,10 +52,9 @@ const updateContact = async (req, res, next) => {
     }
 };
 
-const deleteContact = async (req, res, next) => {
-    const userId = objectId.createFromTime(req.params.id);
+const deleteContact = async (req, res) => {
+    const userId = createObjectId(req.params.id);
     const response = await mongodb.getDb().db().collection('contacts').deleteOne({ _id: userId }, true);
-    console.log(response);
     if (response.deletedCount > 0) {
         res.status(204).send();
     } else {
